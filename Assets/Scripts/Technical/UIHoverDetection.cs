@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ButtonHoverDetection : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class UIHoverDetection : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public ButtonBehaviour buttons;
+    public ButtonBehaviour buttons => GameObject.Find("Controllers").transform.Find("ButtonController").GetComponent<ButtonBehaviour>();
     public void OnPointerEnter(PointerEventData eventData)
     {  
         buttons.cantBuildDestroy = true;

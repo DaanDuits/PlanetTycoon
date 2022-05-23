@@ -15,5 +15,8 @@ public class BuildingObjects : ScriptableObject
     public float coinsTime;
     public bool onObjects;
 
+    public TileBase boostTile;
+    public int boost;
+
     public int tax;
 }

@@ -9,6 +9,7 @@ public class CoinBehaviour : MonoBehaviour
     public BuyingLandBehaviour ownedLand;
 
     public Canvas canvas;
+    public TileBase construction;
 
     public Slider coinSlider;
 
@@ -31,8 +32,9 @@ public class CoinBehaviour : MonoBehaviour
         coinsText.text = coins.ToString();
     }
 
-    public IEnumerator generateMoneyOverTime(int coinsAmount, int posX, int posY, float seconds)
+    public IEnumerator generateMoneyOverTime(int coinsAmount, int posX, int posY, float seconds, BuildingObjects thisTile)
     {
+        Vector3Int CellPos = objects.WorldToCell(new Vector3(posX, posY, 0));
         Slider coinSlider2 = Instantiate(coinSlider, new Vector2(posX + 0.5f, posY + 0.9f), Quaternion.identity, canvas.transform);
         coinSlider2.value = 0;
         coinSlider2.maxValue = seconds;
@@ -46,11 +48,29 @@ public class CoinBehaviour : MonoBehaviour
                 coins += coinsAmount;
                 temporary = 0;
                 coinSlider2.value = 0;
+                if (thisTile.boostTile != null)
+                {
+                    for (int i = 0; i < ownedLand.ownedObjects.Count; i++)
+                    {
+                        if (ownedLand.ownedObjects[i] == thisTile.boostTile)
+                        {
+                            coins += thisTile.boost;
+                        }
+                    }
+                }
             }
-            if (!objects.HasTile(objects.WorldToCell(new Vector3(posX, posY, 0))))
+            if (!objects.HasTile(CellPos))
             {
                 Destroy(coinSlider2.gameObject);
                 yield break;
+            }
+            if (objects.HasTile(CellPos))
+            {
+                if(objects.GetTile(CellPos) == construction)
+                {
+                    Destroy(coinSlider2.gameObject);
+                    yield break;
+                }
             }
             yield return new WaitForEndOfFrame();
         }

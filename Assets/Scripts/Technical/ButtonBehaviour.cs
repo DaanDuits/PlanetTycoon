@@ -11,6 +11,16 @@ public class ButtonBehaviour : MonoBehaviour
 
     public bool[] buildings;
 
+    public GameObject[] buttonHolders;
+
+    private void Start()
+    {
+        for (int i = 0; i < buttonHolders.Length; i++)
+        {
+            buttonHolders[i].SetActive(false);
+        }
+    }
+
     public void SetToDeleting()
     {
         Deleting = true;
@@ -19,60 +29,12 @@ public class ButtonBehaviour : MonoBehaviour
         {
             buildings[i] = false;
         }
-    }
-    public void SetToFarmBuilding()
-    {
-        Deleting = false;
-        Buying= false;
-        for (int i = 0; i < buildings.Length; i++)
+        for (int j = 0; j < buttonHolders.Length; j++)
         {
-            buildings[i] = false;
-            if (i == 0)
-            {
-                buildings[i] = true;
-            }
+            buttonHolders[j].SetActive(false);
         }
     }
-    public void SetToLumberBuilding()
-    {
-        Deleting = false;
-        Buying = false;
-        for (int i = 0; i < buildings.Length; i++)
-        {
-            buildings[i] = false;
-            if (i == 1)
-            {
-                buildings[i] = true;
-            }
-        }
-    }
-    public void SetToMineBuilding()
-    {
-        Deleting = false;
-        Buying = false;
-        for (int i = 0; i < buildings.Length; i++)
-        {
-            buildings[i] = false;
-            if (i == 2)
-            {
-                buildings[i] = true;
-            }
-        }
-    }
-    public void SetToHouseBuilding()
-    {
-        Deleting = false;
-        Buying = false;
-        for (int i = 0; i < buildings.Length; i++)
-        {
-            buildings[i] = false;
-            if (i == 3)
-            {
-                buildings[i] = true;
-            }
-        }
-    }
-    public void SetToBuyingLand()
+    public void SetToBuying()
     {
         Deleting = false;
         Buying = true;
@@ -80,5 +42,33 @@ public class ButtonBehaviour : MonoBehaviour
         {
             buildings[i] = false;
         }
+        for (int j = 0; j < buttonHolders.Length; j++)
+        {
+            buttonHolders[j].SetActive(false);
+        }
+    }
+    public void SetSlotHolder(int i)
+    {
+        for (int j = 0; j < buttonHolders.Length; j++)
+        {
+            buttonHolders[j].SetActive(false);
+        }
+        buttonHolders[i].SetActive(true);
+    }
+
+    public void SetBuilding(int i)
+    {
+        Deleting = false;
+        Buying = false;
+        for (int j = 0; j < buttonHolders.Length; j++)
+        {
+            buttonHolders[j].SetActive(false);
+        }
+        cantBuildDestroy = false;
+        for (int j = 0; j < buildings.Length; j++)
+        {
+            buildings[j] = false;
+        }
+        buildings[i] = true;
     }
 }
