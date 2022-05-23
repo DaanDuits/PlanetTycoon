@@ -15,9 +15,13 @@ MonoBehaviour:
   type: {fileID: 11400000, guid: 76df1bf024d2be94d9deb1cf739c4f46, type: 2}
   placeableTerrain:
   - {fileID: 11400000, guid: 2b9f291f43509b3438c2885d1d8e650a, type: 2}
-  price: 300
+  price: 600
   buildTime: 35
-  coinsAmount: 100
-  coinsTime: 10
+  coinsAmount: 50
+  coinsTime: 0
   onObjects: 1
-  tax: 60
+  value: 150
+  neededValue: 0
+  boostObject: {fileID: 0}
+  boost: 0
+  tax: 300

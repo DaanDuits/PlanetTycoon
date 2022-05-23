@@ -1063,15 +1063,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coins: {fileID: 287874299}
-  tileBases:
-  - {fileID: 11400000, guid: 2b9f291f43509b3438c2885d1d8e650a, type: 2}
-  - {fileID: 11400000, guid: 9ad71cc601e6c7f46ae922facc9be0c8, type: 2}
-  - {fileID: 11400000, guid: d5c20f2314338af41982478b6f8b5871, type: 2}
-  - {fileID: 11400000, guid: 57c58793f67e0714fbfe9b272d947d83, type: 2}
-  - {fileID: 11400000, guid: cddaa02a1ad1bd446a1f4d9af60b1350, type: 2}
-  - {fileID: 11400000, guid: 5cbb72205cb72ba49957660c7b3ad479, type: 2}
-  values: 32000000fa00000096000000960000009cffffffceffffff
-  neededValues: 000000000000000000000000000000006400000032000000
+  types:
+  - {fileID: 11400000, guid: 60b005b6cbe700343b6d76b766650c7e, type: 2}
+  - {fileID: 11400000, guid: 52825ff4cb6500241b673f485e683856, type: 2}
+  - {fileID: 11400000, guid: 97049db1c829b054097b4a442633ec2e, type: 2}
+  - {fileID: 11400000, guid: 302ba550f13cd9a42a58dd4528213504, type: 2}
+  - {fileID: 11400000, guid: 0a15358e62f8b7645a01470de2551d8b, type: 2}
+  - {fileID: 11400000, guid: 0276eb644c2c9ad4d9f684dc7e961b65, type: 2}
+  - {fileID: 11400000, guid: 59df7685e9cdf5241a2f019ff5668bdd, type: 2}
   land: {fileID: 463783079}
   buttons: {fileID: 1257505713}
 --- !u!1 &414494667

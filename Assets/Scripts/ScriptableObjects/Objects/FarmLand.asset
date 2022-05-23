@@ -20,6 +20,8 @@ MonoBehaviour:
   coinsAmount: 10
   coinsTime: 3
   onObjects: 0
-  boostTile: {fileID: 11400000, guid: 76df1bf024d2be94d9deb1cf739c4f46, type: 2}
+  value: 50
+  neededValue: 0
+  boostObject: {fileID: 11400000, guid: 0a15358e62f8b7645a01470de2551d8b, type: 2}
   boost: 10
   tax: 10

@@ -35,44 +35,47 @@ public class CoinBehaviour : MonoBehaviour
     public IEnumerator generateMoneyOverTime(int coinsAmount, int posX, int posY, float seconds, BuildingObjects thisTile)
     {
         Vector3Int CellPos = objects.WorldToCell(new Vector3(posX, posY, 0));
-        Slider coinSlider2 = Instantiate(coinSlider, new Vector2(posX + 0.5f, posY + 0.9f), Quaternion.identity, canvas.transform);
-        coinSlider2.value = 0;
-        coinSlider2.maxValue = seconds;
-        float temporary = 0;
-        while (true)
+        if(seconds != 0)
         {
-            temporary += Time.deltaTime;
-            coinSlider2.value += Time.deltaTime;
-            if (temporary >= seconds)
+            Slider coinSlider2 = Instantiate(coinSlider, new Vector2(posX + 0.5f, posY + 0.9f), Quaternion.identity, canvas.transform);
+            coinSlider2.value = 0;
+            coinSlider2.maxValue = seconds;
+            float temporary = 0;
+            while (true)
             {
-                coins += coinsAmount;
-                temporary = 0;
-                coinSlider2.value = 0;
-                if (thisTile.boostTile != null)
+                temporary += Time.deltaTime;
+                coinSlider2.value += Time.deltaTime;
+                if (temporary >= seconds)
                 {
-                    for (int i = 0; i < ownedLand.ownedObjects.Count; i++)
+                    coins += coinsAmount;
+                    temporary = 0;
+                    coinSlider2.value = 0;
+                    if (thisTile.boostObject.type != null)
                     {
-                        if (ownedLand.ownedObjects[i] == thisTile.boostTile)
+                        for (int i = 0; i < ownedLand.ownedObjects.Count; i++)
                         {
-                            coins += thisTile.boost;
+                            if (ownedLand.ownedObjects[i] == thisTile.boostObject.type)
+                            {
+                                coins += thisTile.boost;
+                            }
                         }
                     }
                 }
-            }
-            if (!objects.HasTile(CellPos))
-            {
-                Destroy(coinSlider2.gameObject);
-                yield break;
-            }
-            if (objects.HasTile(CellPos))
-            {
-                if(objects.GetTile(CellPos) == construction)
+                if (!objects.HasTile(CellPos))
                 {
                     Destroy(coinSlider2.gameObject);
                     yield break;
                 }
+                if (objects.HasTile(CellPos))
+                {
+                    if (objects.GetTile(CellPos) == construction)
+                    {
+                        Destroy(coinSlider2.gameObject);
+                        yield break;
+                    }
+                }
+                yield return new WaitForEndOfFrame();
             }
-            yield return new WaitForEndOfFrame();
         }
     }
 

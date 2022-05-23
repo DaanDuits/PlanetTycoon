@@ -12,23 +12,10 @@ public class DeleteBehaviour : MonoBehaviour
 
     Tilemap objects => GameObject.Find("Grid").transform.Find("Objects").GetComponent<Tilemap>();
 
-    public Object[] types;
-
-    public TileBase[] tileBases;
-    public int[] values;
-    public int[] neededValues;
+    public BuildingObjects[] types;
     public BuyingLandBehaviour land;
 
     public ButtonBehaviour buttons;
-
-    private void Start()
-    {
-        types = new Object[tileBases.Length];
-        for (int i = 0; i < tileBases.Length; i++)
-        {
-            types[i] = new Object(tileBases[i], values[i], neededValues[i]);
-        }
-    }
 
     private void Update()
     {
@@ -51,19 +38,6 @@ public class DeleteBehaviour : MonoBehaviour
                     }
                 }
             }
-        }
-    }
-    public struct Object
-    {
-        public TileBase type;
-        public int value;
-        public int neededValue;
-
-        public Object(TileBase type, int value, int neededValue)
-        {
-            this.type = type;
-            this.value = value;
-            this.neededValue = neededValue;
         }
     }
 }

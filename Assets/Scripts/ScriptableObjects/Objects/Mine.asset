@@ -20,4 +20,8 @@ MonoBehaviour:
   coinsAmount: 40
   coinsTime: 6
   onObjects: 1
+  value: 150
+  neededValue: 0
+  boostObject: {fileID: 0}
+  boost: 0
   tax: 30
