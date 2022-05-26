@@ -5,8 +5,6 @@ using UnityEngine.Tilemaps;
 
 public class BuyingLandBehaviour : MonoBehaviour
 {
-    
-
     public Tilemap tilemap => GameObject.Find("Grid").transform.Find("Land").GetComponent<Tilemap>();
     public Tilemap objects => GameObject.Find("Grid").transform.Find("Objects").GetComponent<Tilemap>();
 
@@ -14,7 +12,7 @@ public class BuyingLandBehaviour : MonoBehaviour
     public CoinBehaviour coins;
     public TileBase tile;
 
-    public BuildingObjects[] objectTypes;
+    public BuildingObject[] objectTypes;
 
     public List<TileBase> ownedLand;
     public List<TileBase> ownedObjects;
@@ -33,7 +31,7 @@ public class BuyingLandBehaviour : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && !buttons.cantBuildDestroy)
         {
             Vector2 inputPos = Camera.main.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition);
-            if (buttons.Buying)
+            if (buttons.specials[1])
             {
                 if (!isOwned(inputPos) && coins.coins >= 50)
                 {
@@ -50,11 +48,11 @@ public class BuyingLandBehaviour : MonoBehaviour
             {
                 for (int i = 0; i < buttons.buildings.Length; i++)
                 {
-                    if (buttons.buildings[i] && coins.coins >= objectTypes[i].price && !objects.HasTile(objects.WorldToCell(inputPos)))
+                    if (!objectTypes[i].onObjects && buttons.buildings[i] && coins.coins >= objectTypes[i].price && !objects.HasTile(objects.WorldToCell(inputPos)) && tilemap.HasTile(tilemap.WorldToCell(inputPos)))
                     {
                         ownedObjects.Add(objectTypes[i].type);
                     }
-                    if (buttons.buildings[i] && coins.coins >= objectTypes[i].price && objects.HasTile(objects.WorldToCell(inputPos)) && objectTypes[i].onObjects)
+                    if (objectTypes[i].onObjects && buttons.buildings[i] && coins.coins >= objectTypes[i].price && objects.HasTile(objects.WorldToCell(inputPos)) && tilemap.HasTile(tilemap.WorldToCell(inputPos)))
                     {
                         for (int j = 0;  j < objectTypes[i].placeableTerrain.Length;  j++)
                         {

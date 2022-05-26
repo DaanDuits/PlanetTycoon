@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 [CreateAssetMenu(fileName = "NewBuilding", menuName = "ScriptableObjects/Buildings", order = 1)]
-public class BuildingObjects : ScriptableObject
+public class BuildingObject : ScriptableObject
 {
     public TileBase type;
     public TileBase[] placeableTerrain;
@@ -15,10 +15,15 @@ public class BuildingObjects : ScriptableObject
     public float coinsTime;
     public bool onObjects;
 
+    public bool isProduction;
+    public ProduceObject[] produce;
+
     public int value;
     public int neededValue;
 
-    public BuildingObjects boostObject;
+    public BuildingObject boostingTile;
+    public int boostTaxes;
+    public BuildingObject boostObject;
     public int boost;
 
     public int tax;

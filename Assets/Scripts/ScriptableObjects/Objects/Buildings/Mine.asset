@@ -10,17 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af7dbaa3451e9174aa2c8fe1af6f8e60, type: 3}
-  m_Name: Forest
+  m_Name: Mine
   m_EditorClassIdentifier: 
-  type: {fileID: 11400000, guid: cddaa02a1ad1bd446a1f4d9af60b1350, type: 2}
-  placeableTerrain: []
-  price: 0
-  buildTime: 0
-  coinsAmount: 0
-  coinsTime: 0
-  onObjects: 0
-  value: -100
-  neededValue: 100
+  type: {fileID: 11400000, guid: d306c7a0c51f84e4ab68ae9b83d38cbb, type: 2}
+  placeableTerrain:
+  - {fileID: 11400000, guid: 6d6ae02f3f59ca140acf42a447390d68, type: 2}
+  price: 300
+  buildTime: 15
+  coinsAmount: 40
+  coinsTime: 6
+  onObjects: 1
+  isProduction: 0
+  produce: {fileID: 0}
+  value: 150
+  neededValue: 0
+  boostingTile: {fileID: 0}
+  boostTaxes: 0
   boostObject: {fileID: 0}
   boost: 0
-  tax: 40
+  tax: 30

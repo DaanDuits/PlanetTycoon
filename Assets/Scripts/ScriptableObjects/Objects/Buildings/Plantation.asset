@@ -10,18 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af7dbaa3451e9174aa2c8fe1af6f8e60, type: 3}
-  m_Name: Mine
+  m_Name: Plantation
   m_EditorClassIdentifier: 
-  type: {fileID: 11400000, guid: d5c20f2314338af41982478b6f8b5871, type: 2}
+  type: {fileID: 11400000, guid: 0d3da2f55ee7254418779eefef50903b, type: 2}
   placeableTerrain:
-  - {fileID: 11400000, guid: db43fac27216ab447b4b2cdb38e5ab11, type: 2}
-  price: 300
+  - {fileID: 11400000, guid: ddd08485093e81c47ad9ad439df2373a, type: 2}
+  - {fileID: 11400000, guid: 9d3b2b05cba2bab42929041b98166041, type: 2}
+  price: 250
   buildTime: 15
-  coinsAmount: 40
+  coinsAmount: 30
   coinsTime: 6
   onObjects: 1
+  isProduction: 1
+  produce:
+  - {fileID: 11400000, guid: 1cf51be7fff92464db366de96be4d1b1, type: 2}
   value: 150
   neededValue: 0
+  boostingTile: {fileID: 0}
+  boostTaxes: 0
   boostObject: {fileID: 0}
   boost: 0
-  tax: 30
+  tax: 20

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd1ca0633dfb8124cae2ee15cdf7aafb, type: 3}
+  m_Name: Log
+  m_EditorClassIdentifier: 
+  type: {fileID: 8636665707522136505, guid: 5aee31d05d301144eacb2afc24e46265, type: 3}
+  buildOn: {fileID: 11400000, guid: 52825ff4cb6500241b673f485e683856, type: 2}
+  tileFind: {fileID: 11400000, guid: 4b10a8c209f79c44f8a2ecc43b10d841, type: 2}
+  amount: 3
+  time: 6
+  tilePrice: 0
+  price: 20
+  i: 3

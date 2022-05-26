@@ -1,12 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
 public class CoinBehaviour : MonoBehaviour
 {
-    public BuyingLandBehaviour ownedLand;
+    public BuyingLandBehaviour land;
 
     public Canvas canvas;
     public TileBase construction;
@@ -19,7 +18,7 @@ public class CoinBehaviour : MonoBehaviour
 
     public float taxTime;
 
-    public BuildingObjects[] buildingTypes;
+    public BuildingObject[] buildingTypes;
     Tilemap objects => GameObject.Find("Grid").transform.Find("Objects").GetComponent<Tilemap>();
 
     private void Start()
@@ -32,29 +31,29 @@ public class CoinBehaviour : MonoBehaviour
         coinsText.text = coins.ToString();
     }
 
-    public IEnumerator generateMoneyOverTime(int coinsAmount, int posX, int posY, float seconds, BuildingObjects thisTile)
+    public IEnumerator generateMoneyOverTime(int posX, int posY, BuildingObject thisTile)
     {
         Vector3Int CellPos = objects.WorldToCell(new Vector3(posX, posY, 0));
-        if(seconds != 0)
+        if(thisTile.coinsTime != 0)
         {
             Slider coinSlider2 = Instantiate(coinSlider, new Vector2(posX + 0.5f, posY + 0.9f), Quaternion.identity, canvas.transform);
             coinSlider2.value = 0;
-            coinSlider2.maxValue = seconds;
+            coinSlider2.maxValue = thisTile.coinsTime;
             float temporary = 0;
             while (true)
             {
                 temporary += Time.deltaTime;
                 coinSlider2.value += Time.deltaTime;
-                if (temporary >= seconds)
+                if (temporary >= thisTile.coinsTime)
                 {
-                    coins += coinsAmount;
+                    coins += thisTile.coinsAmount;
                     temporary = 0;
                     coinSlider2.value = 0;
-                    if (thisTile.boostObject.type != null)
+                    if (thisTile.boostObject != null)
                     {
-                        for (int i = 0; i < ownedLand.ownedObjects.Count; i++)
+                        for (int i = 0; i < land.ownedObjects.Count; i++)
                         {
-                            if (ownedLand.ownedObjects[i] == thisTile.boostObject.type)
+                            if (land.ownedObjects[i] == thisTile.boostObject.type)
                             {
                                 coins += thisTile.boost;
                             }
@@ -88,15 +87,28 @@ public class CoinBehaviour : MonoBehaviour
             if (temporary >= seconds)
             {
                 temporary = 0;
-                foreach (TileBase tile in ownedLand.ownedLand)
+                foreach (TileBase tile in land.ownedLand)
                 {
                     coins -= 30;
                 }
-                for (int i = 0; i < ownedLand.ownedObjects.Count; i++)
+                for (int i = 0; i < land.ownedObjects.Count; i++)
                 {
+                    for (int k = 0; k < land.objectTypes.Length; k++)
+                    {
+                        if (land.ownedObjects[i] == land.objectTypes[k].type && land.objectTypes[k].boostingTile != null)
+                        {
+                            for (int j = 0; j < land.ownedObjects.Count; j++)
+                            {
+                                if (land.ownedObjects[j] == land.objectTypes[k].boostingTile.type)
+                                {
+                                    coins -= land.objectTypes[k].boostTaxes;
+                                }
+                            }
+                        }
+                    }
                     for (int j = 0; j < buildingTypes.Length; j++)
                     {
-                        if (ownedLand.ownedObjects[i] == buildingTypes[j].type)
+                        if (land.ownedObjects[i] == buildingTypes[j].type)
                         {
                             coins -= buildingTypes[j].tax;
                         }

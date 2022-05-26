@@ -10,17 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af7dbaa3451e9174aa2c8fe1af6f8e60, type: 3}
-  m_Name: LoneTree
+  m_Name: Mill
   m_EditorClassIdentifier: 
-  type: {fileID: 11400000, guid: 5cbb72205cb72ba49957660c7b3ad479, type: 2}
-  placeableTerrain: []
-  price: 0
-  buildTime: 0
+  type: {fileID: 11400000, guid: 76df1bf024d2be94d9deb1cf739c4f46, type: 2}
+  placeableTerrain:
+  - {fileID: 11400000, guid: 2b9f291f43509b3438c2885d1d8e650a, type: 2}
+  price: 600
+  buildTime: 35
   coinsAmount: 0
   coinsTime: 0
-  onObjects: 0
-  value: -50
-  neededValue: 50
+  onObjects: 1
+  isProduction: 0
+  produce: {fileID: 0}
+  value: 150
+  neededValue: 0
+  boostingTile: {fileID: 11400000, guid: 60b005b6cbe700343b6d76b766650c7e, type: 2}
+  boostTaxes: 30
   boostObject: {fileID: 0}
   boost: 0
-  tax: 10
+  tax: 250

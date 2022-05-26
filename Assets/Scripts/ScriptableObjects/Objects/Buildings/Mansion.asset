@@ -10,19 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af7dbaa3451e9174aa2c8fe1af6f8e60, type: 3}
-  m_Name: Plantation
+  m_Name: Mansion
   m_EditorClassIdentifier: 
-  type: {fileID: 11400000, guid: 57c58793f67e0714fbfe9b272d947d83, type: 2}
+  type: {fileID: 11400000, guid: 44f6f8f091c462841b2a2d6995d97242, type: 2}
   placeableTerrain:
-  - {fileID: 11400000, guid: 5cbb72205cb72ba49957660c7b3ad479, type: 2}
-  - {fileID: 11400000, guid: cddaa02a1ad1bd446a1f4d9af60b1350, type: 2}
-  price: 250
-  buildTime: 15
-  coinsAmount: 30
-  coinsTime: 6
+  - {fileID: 11400000, guid: 9ad71cc601e6c7f46ae922facc9be0c8, type: 2}
+  price: 20000
+  buildTime: 60
+  coinsAmount: 5000
+  coinsTime: 20
   onObjects: 1
-  value: 150
+  isProduction: 0
+  produce:
+  - {fileID: 0}
+  value: 15000
   neededValue: 0
+  boostingTile: {fileID: 0}
+  boostTaxes: 0
   boostObject: {fileID: 0}
   boost: 0
-  tax: 20
+  tax: 1500

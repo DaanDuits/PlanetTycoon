@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class ButtonBehaviour : MonoBehaviour
 {
-    public bool Deleting = false;
-    public bool Buying = true;
-
     public bool cantBuildDestroy = false;
 
     public bool[] buildings;
+    public bool[] specials;
+    public bool[] produce;
 
     public GameObject[] buttonHolders;
 
@@ -21,45 +20,40 @@ public class ButtonBehaviour : MonoBehaviour
         }
     }
 
-    public void SetToDeleting()
+    public void SetSpecial(int i)
     {
-        Deleting = true;
-        Buying = false;
-        for (int i = 0; i < buildings.Length; i++)
+        for (int j = 0; j < buildings.Length; j++)
         {
-            buildings[i] = false;
+            buildings[j] = false;
         }
         for (int j = 0; j < buttonHolders.Length; j++)
         {
             buttonHolders[j].SetActive(false);
         }
-    }
-    public void SetToBuying()
-    {
-        Deleting = false;
-        Buying = true;
-        for (int i = 0; i < buildings.Length; i++)
+        for (int j = 0; j < specials.Length; j++)
         {
-            buildings[i] = false;
+           specials[j] = false;
         }
-        for (int j = 0; j < buttonHolders.Length; j++)
-        {
-            buttonHolders[j].SetActive(false);
-        }
+        specials[i] = true;
     }
     public void SetSlotHolder(int i)
     {
-        for (int j = 0; j < buttonHolders.Length; j++)
+        if (!buttonHolders[i].activeSelf)
         {
-            buttonHolders[j].SetActive(false);
+            for (int j = 0; j < buttonHolders.Length; j++)
+            {
+                buttonHolders[j].SetActive(false);
+            }
+            buttonHolders[i].SetActive(true);
         }
-        buttonHolders[i].SetActive(true);
+        else
+        {
+            buttonHolders[i] .SetActive(false);
+        }
     }
 
     public void SetBuilding(int i)
     {
-        Deleting = false;
-        Buying = false;
         for (int j = 0; j < buttonHolders.Length; j++)
         {
             buttonHolders[j].SetActive(false);
@@ -69,6 +63,27 @@ public class ButtonBehaviour : MonoBehaviour
         {
             buildings[j] = false;
         }
+        for (int j = 0; j < specials.Length; j++)
+        {
+            specials[j] = false;
+        }
         buildings[i] = true;
+    }
+    public void SetProduce(int i)
+    {
+        for (int j = 0; j < buttonHolders.Length; j++)
+        {
+            buttonHolders[j].SetActive(false);
+        }
+        cantBuildDestroy = false;
+        for (int j = 0; j < produce.Length; j++)
+        {
+            produce[j] = false;
+        }
+        for (int j = 0; j < specials.Length; j++)
+        {
+            specials[j] = false;
+        }
+        produce[i] = true;
     }
 }

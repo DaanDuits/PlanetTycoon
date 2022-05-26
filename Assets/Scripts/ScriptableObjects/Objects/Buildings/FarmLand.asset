@@ -14,14 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: 2b9f291f43509b3438c2885d1d8e650a, type: 2}
   placeableTerrain:
-  - {fileID: 11400000, guid: f662be3b5cdbb3841a648576a738a141, type: 2}
+  - {fileID: 11400000, guid: 51beae5586ae40d468e178a61621713f, type: 2}
   price: 100
   buildTime: 10
   coinsAmount: 10
-  coinsTime: 3
+  coinsTime: 4
   onObjects: 0
+  isProduction: 1
+  produce:
+  - {fileID: 11400000, guid: fcd5d7bb7b8deb944bba5e99ed638690, type: 2}
+  - {fileID: 11400000, guid: 27897186458dc6b498035ebfdddc1308, type: 2}
+  - {fileID: 11400000, guid: fd4e57ad3cdbf2a42a36eb8232d1d635, type: 2}
   value: 50
   neededValue: 0
+  boostingTile: {fileID: 0}
+  boostTaxes: 0
   boostObject: {fileID: 11400000, guid: 0a15358e62f8b7645a01470de2551d8b, type: 2}
-  boost: 10
+  boost: 3
   tax: 10

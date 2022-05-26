@@ -12,14 +12,14 @@ public class DeleteBehaviour : MonoBehaviour
 
     Tilemap objects => GameObject.Find("Grid").transform.Find("Objects").GetComponent<Tilemap>();
 
-    public BuildingObjects[] types;
+    public BuildingObject[] types;
     public BuyingLandBehaviour land;
 
     public ButtonBehaviour buttons;
 
     private void Update()
     {
-        if (buttons.Deleting && !buttons.cantBuildDestroy)
+        if (buttons.specials[0] && !buttons.cantBuildDestroy)
         {
             if (Input.GetMouseButtonDown(0))
             {
